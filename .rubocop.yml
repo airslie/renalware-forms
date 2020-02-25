@@ -1,0 +1,57 @@
+require:
+  - rubocop-rails
+  - rubocop-rspec
+  - rubocop-performance
+
+# Note that the local default.yml is overwritten on CodeClimate with the contents of
+# the remote rubocop.yml pulled from GitHub in a codeclimate prepare step.
+inherit_from:
+  - default.yml
+
+AllCops:
+  UseCache: true
+  TargetRubyVersion: 2.4
+  # Just defining the Exclude or Include keys here overwrites the settings in default.yml
+  # so we have to redefine the entire set
+  Exclude:
+    - "*.gemspec"
+    - "vendor/**/*"
+    - "bin/**/*"
+    - "lib/tasks/**/*"
+    - "db/**/*"
+    - "spec/dummy/bin/**/*"
+    - "spec/dummy/lib/tasks/**/*"
+    - "spec/dummy/db/**/*"
+    - "tmp/**/*"
+    - "spec/dummy/tmp/**/*"
+    - "vendor/bundle/**/*"
+    - "config/initializers/devise.rb"
+
+Layout/LineLength:
+  Exclude:
+    - "spec/acceptance/renalware/steps/**/*"
+
+Metrics/AbcSize:
+  Max: 50
+RSpec/ExampleLength:
+  Max: 40
+RSpec/NestedGroups:
+  Max: 4
+RSpec/MultipleExpectations:
+  Max: 20
+RSpec/DescribeClass:
+  Enabled: false
+RSpec/ImplicitSubject:
+  Enabled: false
+RSpec/DescribedClass:
+  Enabled: false
+Performance/RedundantBlockCall:
+  Enabled: false
+Style/NumericPredicate:
+  Enabled: false
+RSpec/InstanceVariable:
+  Enabled: false
+Metrics/MethodLength:
+  Max: 50
+Rails/Date:
+  Enabled: false

@@ -1,0 +1,4 @@
+tmp/**/*
+.byebug_history
+.rubocop-https---raw-githubusercontent-com-airslie-styleguide-master-rubocop-yml
+.overcommit.yml
