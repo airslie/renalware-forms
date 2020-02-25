@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-module Renalware::Forms::Homecare
+module Renalware::Forms
   module Generic
     extend ActiveSupport::Autoload
 
-    autoload :V1
+    autoload :Homecare
   end
 end

@@ -9,6 +9,7 @@ module Renalware::Forms
   module Homecare
     extend ActiveSupport::Autoload
 
+    autoload :Pdf
     autoload :Args
     autoload :Generic
   end

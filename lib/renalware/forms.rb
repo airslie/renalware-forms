@@ -12,5 +12,6 @@ module Renalware
     autoload :Helpers
     autoload :Base
     autoload :Homecare
+    autoload :Generic
   end
 end

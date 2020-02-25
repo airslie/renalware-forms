@@ -1,12 +1,11 @@
 # frozen_string_literal: true
 
-module Renalware::Forms::Homecare
+module Renalware::Forms
   module Generic
-    module V1
+    module Homecare
       extend ActiveSupport::Autoload
 
-      autoload :Base
-      autoload :Document
+      autoload :V1
     end
   end
 end
