@@ -2,3 +2,4 @@ tmp/**/*
 .byebug_history
 .rubocop-https---raw-githubusercontent-com-airslie-styleguide-master-rubocop-yml
 .overcommit.yml
+pkg/renalware-forms-0.1.0.gem
