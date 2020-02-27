@@ -55,3 +55,5 @@ Metrics/MethodLength:
   Max: 50
 Rails/Date:
   Enabled: false
+Rails/TimeZone:
+  Enabled: false

@@ -22,5 +22,40 @@ module Renalware::Forms
         }
       end
     end
+
+    def cell_with_trailing_checkbox(text, checked: false, **options)
+      if checked
+        {
+          content: "#{text} <font name='ZapfDingbats'>#{CHECKBOX}</font>",
+          inline_format: true,
+          **options
+        }
+      else
+        {
+          content: "#{text} <font name='ZapfDingbats'>#{EMPTY_CHECKBOX}</font>",
+          inline_format: true,
+          **options
+        }
+      end
+    end
+
+    def underlined_table_style
+      {
+        cell_style: {
+          padding: [2, 5, 2, 0],
+          border_width: 0.5,
+          border_color: "AAAAAA",
+          borders: [:bottom]
+        }
+      }
+    end
+
+    def borderless_table_style
+      {
+        cell_style: {
+          border_width: 0.5
+        }
+      }
+    end
   end
 end

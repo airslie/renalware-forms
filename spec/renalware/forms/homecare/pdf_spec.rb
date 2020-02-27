@@ -60,7 +60,12 @@ RSpec.describe Renalware::Forms::Homecare::Pdf do
 
     context "when arguments are valid" do
       it "create render a PDF for a Generic::Homecare::V1::Document" do
-        args = Renalware::Forms::Homecare::Args.new(provider: :generic, version: 1)
+        args = Renalware::Forms::Homecare::Args.new(
+          provider: :generic,
+          version: 1,
+          family_name: "X",
+          given_name: "Y"
+        )
 
         pdf_data = described_class.generate(args).render
 

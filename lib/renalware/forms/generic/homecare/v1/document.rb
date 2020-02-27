@@ -10,10 +10,20 @@ module Renalware::Forms::Generic
       end
 
       def document
-        @document ||= Prawn::Document.new(page_size: "A4", page_layout: :portrait, margin: 15)
+        @document ||= Prawn::Document.new(page_size: "A4", page_layout: :portrait, margin: 25)
       end
 
-      def build; end
+      def build
+        Prawn::Font::AFM.hide_m17n_warning = true
+        [
+          Heading,
+          PatientDetails,
+          Medications,
+          Allergies,
+          Frequency,
+          Signoff
+        ].each { |klass| klass.new(document, args).build }
+      end
     end
   end
 end

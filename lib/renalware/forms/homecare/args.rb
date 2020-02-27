@@ -5,43 +5,69 @@ require "active_model"
 
 module Renalware::Forms
   class Homecare::Args
-    include Virtus::Model
+    include Virtus.model
     include ActiveModel::Validations
+
+    class Medication
+      include Virtus.model(strict: true)
+      include ActiveModel::Validations
+
+      attribute :date, Date
+      attribute :drug, String
+      attribute :dose, String
+      attribute :route, String
+      attribute :frequency, String
+    end
 
     # The first 2 attrbutes are used to drive what PDF to build
     attribute :provider, String
     attribute :version, Integer
-
-    attribute :title, String
+    attribute :title, String, default: ""
     attribute :given_name, String
     attribute :family_name, String
-    attribute :nhs_number, String
+    attribute :nhs_number, String, default: ""
     attribute :born_on, Date
-    attribute :fmc_patient, String
-    attribute :telephone, String
-    attribute :hospital_number, String
-    attribute :address, String
-    attribute :postcode, String
+    attribute :modality, String, default: ""
+    attribute :fmc_patient, String, default: ""
+    attribute :telephone, String, default: ""
+    attribute :hospital_number, String, default: ""
+    attribute :address, Array(String), default: []
+    attribute :postcode, String, default: ""
     attribute :modality, String
-    attribute :prescriber_name, String
+    attribute :prescriber_name, String, default: ""
     attribute :prescription_date, Date
     attribute :hospital_name, String
     attribute :hospital_department, String
     attribute :hospital_address, Array[String]
     attribute :po_number, String
+    attribute :generated_at, DateTime
     attribute :no_known_allergies, Boolean
     attribute :allergies, Array[String]
+    attribute :drug_type, String
     attribute :administration_route, String
     attribute :administration_frequency, String
     attribute :prescription_duration, String
     attribute :administration_device, String
+    attribute :medications, Array[Medication]
+    attribute :consultant, String
+    attribute :delivery_frequencies, Array[String]
 
     # validates! will raise eg ActiveModel::StrictValidationFailed: Family name can't be blank
     validates! :family_name, presence: true
     validates! :given_name, presence: true
 
+    def patient_name
+      name = [family_name, given_name].compact.join(", ")
+      name += " (#{title})" if title.to_s != ""
+      name
+    end
+
     def formatted_address
       format_address_array address
+    end
+
+    def formatted_address_and_postcode
+      format_address_array(address << postcode)
     end
 
     def formatted_hospital_address
@@ -81,11 +107,13 @@ module Renalware::Forms
         args.fmc_patient = "123"
         args.telephone = "07000 000001"
         args.hospital_number = "ABC123"
-        args.address = ["line1", "", nil, "line2", "line3.   "]
+        args.modality = "PD"
+        args.address = ["line1", "", nil, "line2", "line3   "]
         args.postcode = "TW1 1UU"
         args.modality = "HD"
         args.prescriber_name = "Dr X Yz"
         args.prescription_date = Date.today.to_s
+        args.consultant = "Dr Pepper"
         args.hospital_name = "THE ROYAL LONDON HOSPITAL"
         args.hospital_department = ""
         args.hospital_address = [
@@ -97,10 +125,22 @@ module Renalware::Forms
         ]
         args.no_known_allergies = false
         args.allergies = ["Nuts", nil, "Penicillin", "Mown grass"]
+        args.drug_type = "ESA"
         args.administration_frequency = "Daily"
         args.administration_route = "Per Oral"
         args.prescription_duration = "1 month"
         args.administration_device = "device?"
+        args.po_number = "P123"
+        args.generated_at = Time.now
+        args.delivery_frequencies = ["1 week", "3 months", "6 months", "12 month", "Other"]
+
+        args.medications << Medication.new(
+          date: Date.today,
+          drug: "Example drug",
+          dose: "1 unit",
+          route: "PO",
+          frequency: "3"
+        )
 
         raise ArgumentError, args.errors unless args.valid?
       end

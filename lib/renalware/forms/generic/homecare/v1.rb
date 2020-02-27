@@ -7,6 +7,12 @@ module Renalware::Forms::Generic
 
       autoload :Base
       autoload :Document
+      autoload :Heading
+      autoload :PatientDetails
+      autoload :Medications
+      autoload :Allergies
+      autoload :Frequency
+      autoload :Signoff
     end
   end
 end
