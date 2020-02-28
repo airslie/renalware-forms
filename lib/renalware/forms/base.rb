@@ -3,8 +3,8 @@
 module Renalware::Forms
   class Base
     include Prawn::View
-    EMPTY_CHECKBOX = "o     " # in ZapfDingbats
-    CHECKBOX = "3    "
+    EMPTY_CHECKBOX = "o     " #  ❏ in ZapfDingbats
+    CHECKBOX = "n    "        #  ■ in ZapfDingbats
 
     # lower case o is an empty checkbox in ZapfDingbats
     def cell_with_leading_checkbox(text, checked: false, **options)

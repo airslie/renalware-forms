@@ -57,3 +57,5 @@ Rails/Date:
   Enabled: false
 Rails/TimeZone:
   Enabled: false
+Style/AsciiComments:
+  Enabled: false

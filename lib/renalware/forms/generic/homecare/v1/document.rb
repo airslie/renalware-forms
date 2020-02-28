@@ -20,7 +20,8 @@ module Renalware::Forms::Generic
           PatientDetails,
           Medications,
           Allergies,
-          Frequency,
+          PrescriptionDurations,
+          DeliveryFrequencies,
           Signoff
         ].each { |klass| klass.new(document, args).build }
       end

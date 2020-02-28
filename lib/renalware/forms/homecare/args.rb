@@ -3,6 +3,7 @@
 require "virtus"
 require "active_model"
 
+# rubocop:disable Metrics/ClassLength
 module Renalware::Forms
   class Homecare::Args
     include Virtus.model
@@ -50,7 +51,9 @@ module Renalware::Forms
     attribute :administration_device, String
     attribute :medications, Array[Medication]
     attribute :consultant, String
-    attribute :delivery_frequencies, Array[String]
+    attribute :delivery_frequencies, Array[String], default: ["3 months", "6 months"]
+    attribute :prescription_durations, Array[String] # e.g. ["3 months", "6 months"]
+    attribute :selected_prescription_duration, String # e.g. "3 months"
 
     # validates! will raise eg ActiveModel::StrictValidationFailed: Family name can't be blank
     validates! :family_name, presence: true
@@ -132,7 +135,9 @@ module Renalware::Forms
         args.administration_device = "device?"
         args.po_number = "P123"
         args.generated_at = Time.now
-        args.delivery_frequencies = ["1 week", "3 months", "6 months", "12 month", "Other"]
+        args.delivery_frequencies = ["1 week", "3 months", "6 months", "12 month"]
+        args.prescription_durations = ["3 months", "6 months", "12 months"]
+        args.selected_prescription_duration = "6 months"
 
         args.medications << Medication.new(
           date: Date.today,
@@ -147,3 +152,4 @@ module Renalware::Forms
     end
   end
 end
+# rubocop:enable Metrics/ClassLength
