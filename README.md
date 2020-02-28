@@ -1,4 +1,6 @@
 [![Gem Version](https://badge.fury.io/rb/renalware-forms.svg)](https://badge.fury.io/rb/renalware-forms)
+[![Maintainability](https://api.codeclimate.com/v1/badges/945cd0c49335e9e4595d/maintainability)](https://codeclimate.com/github/airslie/renalware-forms/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/945cd0c49335e9e4595d/test_coverage)](https://codeclimate.com/github/airslie/renalware-forms/test_coverage)
 
 # Renalware::Forms
 
