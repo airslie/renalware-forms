@@ -1,3 +1,5 @@
+[![Gem Version](https://badge.fury.io/rb/renalware-forms.svg)](https://badge.fury.io/rb/renalware-forms)
+
 # Renalware::Forms
 
 This gem
@@ -63,4 +65,4 @@ for it to open on a Mac).
 
 ## License
 
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT)
