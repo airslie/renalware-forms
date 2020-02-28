@@ -1,0 +1,48 @@
+# Use the latest stable version of Semaphore 2.0 YML syntax:
+version: v1.0
+name: renalware-forms
+
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+
+blocks:
+  - name: Test setup
+    task:
+      jobs:
+        - name: bundle
+          commands:
+            - checkout
+            - cache restore gems-$SEMAPHORE_GIT_BRANCH-$(checksum Gemfile.lock),gems-$SEMAPHORE_GIT_BRANCH-,gems-master-
+            - sem-version ruby 2.6.3
+            - bundle install --deployment -j 4 --path vendor/bundle
+            - cache store gems-$SEMAPHORE_GIT_BRANCH-$(checksum Gemfile.lock) vendor/bundle
+
+  - name: Tests
+    task:
+      env_vars:
+        - name: RAILS_ENV
+          value: test
+
+      prologue:
+        commands:
+          - checkout
+          - cache restore gems-$SEMAPHORE_GIT_BRANCH-$(checksum Gemfile.lock),gems-$SEMAPHORE_GIT_BRANCH-,gems-master-
+          - git submodule sync ; git submodule update --init
+          # codeclimate setup - see https://docs.semaphoreci.com/article/148-configuring-parallel-tests-with-code-climate
+          - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+          - chmod +x ./cc-test-reporter
+          - ./cc-test-reporter before-build
+          - sem-version ruby 2.6.3
+          - bundle install --deployment --path vendor/bundle
+
+      jobs:
+        - name: RSpec tests
+          commands:
+            - bundle exec rspec --format progress
+
+      epilogue:
+        on_pass:
+          commands:
+            - ./cc-test-reporter after-build
