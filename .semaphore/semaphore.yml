@@ -25,6 +25,10 @@ blocks:
         - name: RAILS_ENV
           value: test
 
+      # This secret on semaphore contains the CC_TEST_REPORTER_ID ENV var
+      secrets:
+        - name: renalware-forms
+
       prologue:
         commands:
           - checkout
@@ -45,4 +49,6 @@ blocks:
       epilogue:
         on_pass:
           commands:
+            # - exitcode=$(if [ "$SEMAPHORE_THREAD_RESULT" == "passed" ]; then echo 0; else echo 1; fi)
+            # - ./cc-test-reporter after-build --exit-code $exitcode
             - ./cc-test-reporter after-build
