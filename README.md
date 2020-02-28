@@ -1,3 +1,5 @@
+[![Gem Version](https://badge.fury.io/rb/renalware-forms.svg)](https://badge.fury.io/rb/renalware-forms)
+
 # Renalware::Forms
 
 This gem
