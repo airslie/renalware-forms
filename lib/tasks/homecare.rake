@@ -1,5 +1,5 @@
 
-require "./lib/renalware"
+require "./lib/renalware/forms"
 require "tempfile"
 
 namespace :forms do

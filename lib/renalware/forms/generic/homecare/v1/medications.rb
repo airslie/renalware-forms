@@ -28,8 +28,6 @@ module Renalware::Forms::Generic
           ]
         end
 
-        # require 'byebug'
-        # byebug
         table(
           rows,
           column_widths: {

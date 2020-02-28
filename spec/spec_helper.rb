@@ -16,7 +16,7 @@
 
 require "tempfile"
 require "pdf-reader"
-require "./lib/renalware"
+require "./lib/renalware/forms"
 
 def pdf_reader_from(prawn_doc)
   file = Tempfile.new("pdf")
