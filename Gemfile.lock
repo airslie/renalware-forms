@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    renalware-forms (0.1.1)
+    renalware-forms (0.1.2)
       activemodel
       attr_extras (~> 6.2)
       prawn (~> 2.2)
@@ -46,7 +46,7 @@ GEM
     json (2.3.0)
     minitest (5.14.0)
     parallel (1.19.1)
-    parser (2.7.0.2)
+    parser (2.7.0.4)
       ast (~> 2.4.0)
     pdf-core (0.7.0)
     pdf-reader (2.4.0)
@@ -77,7 +77,7 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.9.0)
     rspec-support (3.9.2)
-    rubocop (0.80.0)
+    rubocop (0.80.1)
       jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
       parser (>= 2.7.0.1)
@@ -109,7 +109,7 @@ GEM
       coercible (~> 1.0)
       descendants_tracker (~> 0.0, >= 0.0.3)
       equalizer (~> 0.0, >= 0.0.9)
-    zeitwerk (2.2.2)
+    zeitwerk (2.3.0)
 
 PLATFORMS
   ruby
