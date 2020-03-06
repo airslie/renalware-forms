@@ -55,9 +55,11 @@ module Renalware::Forms
     attribute :prescription_durations, Array[String] # e.g. ["3 months", "6 months"]
     attribute :selected_prescription_duration, String # e.g. "3 months"
 
-    # validates! will raise eg ActiveModel::StrictValidationFailed: Family name can't be blank
-    validates! :family_name, presence: true
-    validates! :given_name, presence: true
+    validates :family_name, presence: true
+    validates :given_name, presence: true
+    validates :provider, presence: true
+    validates :version, presence: true
+    validate :medications_are_present
 
     def patient_name
       name = [family_name, given_name].compact.join(", ")
@@ -85,7 +87,7 @@ module Renalware::Forms
     def format_address_array(add)
       return unless add&.is_a?(Array)
 
-      add.compact.reject { |line| line == "" }&.uniq&.join("\n")
+      add.compact.reject { |line| line == "" }.uniq&.join("\n")
     end
 
     def formatted_prescription_date
@@ -148,6 +150,12 @@ module Renalware::Forms
         )
 
         raise ArgumentError, args.errors unless args.valid?
+      end
+    end
+
+    def medications_are_present
+      if medications.size == 0
+        errors.add(:base, "There are no home delivery prescriptions for this drug type")
       end
     end
   end
