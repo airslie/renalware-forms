@@ -8,3 +8,9 @@ This project adheres to Semantic Versioning.
 ### Added
 ### Changed
 ### Fixed
+
+## 0.1.3
+### Added
+### Changed
+### Fixed
+- Bring in allergies
