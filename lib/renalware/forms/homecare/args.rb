@@ -120,7 +120,8 @@ module Renalware::Forms
         args.prescription_date = Date.today.to_s
         args.consultant = "Dr Pepper"
         args.hospital_name = "THE ROYAL LONDON HOSPITAL"
-        args.hospital_department = ""
+        args.hospital_telephone = "0000 000001"
+        args.hospital_department = "Renal"
         args.hospital_address = [
           nil,
           "WHITECHAPEL",
