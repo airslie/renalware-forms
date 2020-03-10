@@ -40,6 +40,7 @@ module Renalware::Forms
     attribute :hospital_name, String
     attribute :hospital_department, String
     attribute :hospital_address, Array[String]
+    attribute :hospital_telephone, String
     attribute :po_number, String
     attribute :generated_at, DateTime
     attribute :no_known_allergies, Boolean
