@@ -29,7 +29,6 @@ module Renalware::Forms
     attribute :nhs_number, String, default: ""
     attribute :born_on, Date
     attribute :modality, String, default: ""
-    attribute :fmc_patient, String, default: ""
     attribute :telephone, String, default: ""
     attribute :hospital_number, String, default: ""
     attribute :address, Array(String), default: []
@@ -46,8 +45,6 @@ module Renalware::Forms
     attribute :no_known_allergies, Boolean
     attribute :allergies, Array[String]
     attribute :drug_type, String
-    attribute :administration_route, String
-    attribute :administration_frequency, String
     attribute :prescription_duration, String
     attribute :administration_device, String
     attribute :medications, Array[Medication]
@@ -111,7 +108,6 @@ module Renalware::Forms
         args.family_name = "JONES"
         args.nhs_number = "0123456789"
         args.born_on = Date.parse("2001-01-01")
-        args.fmc_patient = "123"
         args.telephone = "07000 000001"
         args.hospital_number = "ABC123"
         args.modality = "PD"
@@ -134,8 +130,6 @@ module Renalware::Forms
         args.no_known_allergies = false
         args.allergies = ["Nuts", nil, "Penicillin", "Mown grass"]
         args.drug_type = "ESA"
-        args.administration_frequency = "Daily"
-        args.administration_route = "Per Oral"
         args.prescription_duration = "1 month"
         args.administration_device = "device?"
         args.po_number = "P123"
@@ -143,6 +137,7 @@ module Renalware::Forms
         args.delivery_frequencies = ["1 week", "3 months", "6 months", "12 month"]
         args.prescription_durations = ["3 months", "6 months", "12 months"]
         args.selected_prescription_duration = "6 months"
+        args.selected_delivery_frequency = "6 months"
 
         args.medications << Medication.new(
           date: Date.today,
