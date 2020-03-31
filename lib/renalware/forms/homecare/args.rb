@@ -55,6 +55,7 @@ module Renalware::Forms
     attribute :delivery_frequencies, Array[String], default: ["3 months", "6 months"]
     attribute :prescription_durations, Array[String] # e.g. ["3 months", "6 months"]
     attribute :selected_prescription_duration, String # e.g. "3 months"
+    attribute :selected_delivery_frequency, String # e.g. "6 months"
 
     validates :family_name, presence: true
     validates :given_name, presence: true
