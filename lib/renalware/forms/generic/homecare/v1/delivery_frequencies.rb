@@ -8,7 +8,8 @@ module Renalware::Forms::Generic
         move_down 10
         row = [heading("Frequency of deliveries:")]
         args.delivery_frequencies.each do |freq|
-          row.concat << cell_with_leading_checkbox(freq)
+          checked = freq == args.selected_delivery_frequency
+          row.concat << cell_with_leading_checkbox(freq, checked: checked)
         end
 
         table(

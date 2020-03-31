@@ -34,5 +34,20 @@ module Renalware::Forms::Generic
         expect(text).to include("❏ 6 months")
       end
     end
+
+    context "when there is a selected delivery_frequency" do
+      it "indicates that frequency has been selected by checking a box" do
+        args = Renalware::Forms::Homecare::Args.new(
+          delivery_frequencies: ["3 months", "6 months", "12 months"],
+          selected_delivery_frequency: "6 months"
+        )
+
+        text = extract_pdf_text(args)
+
+        expect(text).to include("❏ 3 months")
+        expect(text).to include("■ 6 months")
+        expect(text).to include("❏ 12 months")
+      end
+    end
   end
 end

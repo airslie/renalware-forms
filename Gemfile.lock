@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    renalware-forms (0.1.5)
+    renalware-forms (0.1.6)
       activemodel
       attr_extras (~> 6.2)
       prawn (~> 2.2)
@@ -14,9 +14,9 @@ GEM
   remote: https://rubygems.org/
   specs:
     Ascii85 (1.0.3)
-    activemodel (6.0.2.1)
-      activesupport (= 6.0.2.1)
-    activesupport (6.0.2.1)
+    activemodel (6.0.2.2)
+      activesupport (= 6.0.2.2)
+    activesupport (6.0.2.2)
       concurrent-ruby (~> 1.0, >= 1.0.2)
       i18n (>= 0.7, < 2)
       minitest (~> 5.1)

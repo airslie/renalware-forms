@@ -9,6 +9,13 @@ This project adheres to Semantic Versioning.
 ### Changed
 ### Fixed
 
+## 0.1.6
+31 Mar 2020
+### Added
+### Changed
+### Fixed
+- Support supplying a selected delivery frequency
+
 ## 0.1.3
 ### Added
 ### Changed

@@ -28,11 +28,12 @@ module Renalware::Forms
     def generate
       document_klass = Renalware::Forms.const_get(document_class_name)
       document_klass.build(args)
-    rescue NameError
+    rescue NameError => e
       raise(
         ArgumentError,
         "No PDF forms found for provider=#{args.provider} version=#{args.version} "\
-        "trying to resolve Renalware::Forms::#{document_class_name}"
+        "trying to resolve Renalware::Forms::#{document_class_name} " \
+        "#{e.message}"
       )
     end
 
