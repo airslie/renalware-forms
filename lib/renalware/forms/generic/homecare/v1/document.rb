@@ -10,7 +10,11 @@ module Renalware::Forms::Generic
       end
 
       def document
-        @document ||= Prawn::Document.new(page_size: "A4", page_layout: :portrait, margin: 25)
+        @document ||= Prawn::Document.new(
+          page_size: "A4",
+          page_layout: :portrait,
+          margin: [25, 25, 10, 25]
+        )
       end
 
       def build
@@ -22,7 +26,8 @@ module Renalware::Forms::Generic
           Allergies,
           PrescriptionDurations,
           DeliveryFrequencies,
-          Signoff
+          Signoff,
+          Footer
         ].each { |klass| klass.new(document, args).build }
       end
     end
