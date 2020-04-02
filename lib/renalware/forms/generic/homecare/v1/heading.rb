@@ -20,6 +20,8 @@ module Renalware::Forms::Generic
           width: 60,
           at: [490, 800]
         )
+        font_size 10
+        text_box args.formatted_hospital_address, at: [350, 765], width: 200, align: :right
       end
     end
   end
