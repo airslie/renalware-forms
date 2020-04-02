@@ -4,6 +4,7 @@ require "zeitwerk"
 require "prawn"
 require "prawn/table"
 require "attr_extras"
+require_relative "./forms/version"
 
 # Set up autoloading with zeitwerk
 # As we are nested in lib/renalware/forms, be sure to push an absolute
