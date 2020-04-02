@@ -121,11 +121,15 @@ module Renalware::Forms
         args.hospital_telephone = "0000 000001"
         args.hospital_department = "Renal"
         args.hospital_address = [
-          nil,
-          "WHITECHAPEL",
-          "",
+          "The Royal London Hospital",
+          "Barts Health NHS Trust",
+          "Whitechapel",
           "LONDON",
-          "E1 1FR"
+          "E1 1FR",
+          "UK",
+          "Tel: 0800 00000000",
+          "Another line"
+
         ]
         args.no_known_allergies = false
         args.allergies = ["Nuts", nil, "Penicillin", "Mown grass"]
