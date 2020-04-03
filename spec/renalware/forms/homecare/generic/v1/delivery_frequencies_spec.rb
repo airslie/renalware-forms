@@ -11,9 +11,8 @@ module Renalware::Forms::Generic
     end
 
     it do
-      args = Renalware::Forms::Homecare::Args.new(
-        delivery_frequencies: ["Once", "3 weeks", "6 weeks"]
-      )
+      hash = default_test_arg_values.update(delivery_frequencies: ["Once", "3 weeks", "6 weeks"])
+      args = Renalware::Forms::Homecare::Args.new(hash)
 
       text = extract_pdf_text(args)
 
@@ -25,7 +24,7 @@ module Renalware::Forms::Generic
 
     context "when there are no frequencies supplied" do
       it "displays the defaults" do
-        args = Renalware::Forms::Homecare::Args.new
+        args = Renalware::Forms::Homecare::Args.new(**default_test_arg_values)
 
         text = extract_pdf_text(args)
 
@@ -37,10 +36,11 @@ module Renalware::Forms::Generic
 
     context "when there is a selected delivery_frequency" do
       it "indicates that frequency has been selected by checking a box" do
-        args = Renalware::Forms::Homecare::Args.new(
+        hash = default_test_arg_values.update(
           delivery_frequencies: ["3 months", "6 months", "12 months"],
           selected_delivery_frequency: "6 months"
         )
+        args = Renalware::Forms::Homecare::Args.new(hash)
 
         text = extract_pdf_text(args)
 
