@@ -6,7 +6,12 @@ module Renalware::Forms::Homecare
   RSpec.describe Args do
     describe "#patient_name" do
       subject {
-        described_class.new(given_name: "John", family_name: "SMITH", title: title).patient_name
+        hash = default_test_arg_values.update(
+          given_name: "John",
+          family_name: "SMITH",
+          title: title
+        )
+        described_class.new(hash).patient_name
       }
 
       context "when title present" do
@@ -20,12 +25,6 @@ module Renalware::Forms::Homecare
 
         it { is_expected.to eq("SMITH, John") }
       end
-    end
-
-    describe "#medications" do
-      subject { described_class.new.medications }
-
-      it { is_expected.to eq([]) }
     end
   end
 end

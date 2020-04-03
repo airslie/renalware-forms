@@ -11,9 +11,10 @@ module Renalware::Forms::Generic
     end
 
     it do
-      args = Renalware::Forms::Homecare::Args.new(
+      hash = default_test_arg_values.update(
         prescription_durations: ["3 months", "6 months", "12 months"]
       )
+      args = Renalware::Forms::Homecare::Args.new(hash)
 
       text = extract_pdf_text(args)
 
@@ -23,8 +24,8 @@ module Renalware::Forms::Generic
       expect(text).to include("❏ 12 months")
     end
 
-    it "works wher there are no prescription_durations supplied" do
-      args = Renalware::Forms::Homecare::Args.new
+    it "works where there are no prescription_durations supplied" do
+      args = Renalware::Forms::Homecare::Args.new(default_test_arg_values)
 
       text = extract_pdf_text(args)
 
@@ -34,8 +35,10 @@ module Renalware::Forms::Generic
     context "when there is a selected prescription_duration" do
       it "indicates that duration has been selected eg for checking a box" do
         args = Renalware::Forms::Homecare::Args.new(
-          prescription_durations: ["3 months", "6 months", "12 months"],
-          selected_prescription_duration: "6 months"
+          default_test_arg_values.update(
+            prescription_durations: ["3 months", "6 months", "12 months"],
+            selected_prescription_duration: "6 months"
+          )
         )
 
         text = extract_pdf_text(args)
