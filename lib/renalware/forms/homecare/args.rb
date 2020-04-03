@@ -1,58 +1,68 @@
 # frozen_string_literal: true
 
-require "virtus"
+require "dry-types"
+require "dry-struct"
 require "active_model"
 
 # rubocop:disable Metrics/ClassLength
 module Renalware::Forms
-  class Homecare::Args
-    include Virtus.model
+  module Types
+    include Dry.Types()
+  end
+
+  class Homecare::Args < Dry::Struct
     include ActiveModel::Validations
 
-    class Medication
-      include Virtus.model(strict: true)
+    class Medication < Dry::Struct
       include ActiveModel::Validations
 
-      attribute :date, Date
-      attribute :drug, String
-      attribute :dose, String
-      attribute :route, String
-      attribute :frequency, String
+      attribute :date, Types::Params::Date
+      attribute :drug, Types::String
+      attribute :dose, Types::String
+      attribute :route, Types::String
+      attribute :frequency, Types::String
     end
 
     # The first 2 attrbutes are used to drive what PDF to build
-    attribute :provider, String
-    attribute :version, Integer
-    attribute :title, String, default: ""
-    attribute :given_name, String
-    attribute :family_name, String
-    attribute :nhs_number, String, default: ""
-    attribute :born_on, Date
-    attribute :modality, String, default: ""
-    attribute :telephone, String, default: ""
-    attribute :hospital_number, String, default: ""
-    attribute :address, Array(String), default: []
-    attribute :postcode, String, default: ""
-    attribute :modality, String
-    attribute :prescriber_name, String, default: ""
-    attribute :prescription_date, Date
-    attribute :hospital_name, String
-    attribute :hospital_department, String
-    attribute :hospital_address, Array[String]
-    attribute :hospital_telephone, String
-    attribute :po_number, String
-    attribute :generated_at, DateTime
-    attribute :no_known_allergies, Boolean
-    attribute :allergies, Array[String]
-    attribute :drug_type, String
-    attribute :prescription_duration, String
-    attribute :administration_device, String
-    attribute :medications, Array[Medication]
-    attribute :consultant, String
-    attribute :delivery_frequencies, Array[String], default: ["3 months", "6 months"]
-    attribute :prescription_durations, Array[String] # e.g. ["3 months", "6 months"]
-    attribute :selected_prescription_duration, String # e.g. "3 months"
-    attribute :selected_delivery_frequency, String # e.g. "6 months"
+    attribute :provider, Types::Coercible::String
+    attribute :version, Types::Integer
+    attribute :title, Types::String.default("")
+    attribute :given_name, Types::String
+    attribute :family_name, Types::String
+    attribute :nhs_number, Types::String.default("")
+    attribute :born_on, Types::Params::Date
+    attribute :modality, Types::String.default("")
+    attribute :telephone, Types::String.default("")
+    attribute :hospital_number, Types::String.default("")
+    attribute :address, Types::Array.of(Types::Coercible::String).default([].dup, shared: true)
+    attribute :postcode, Types::String.default("")
+    attribute :prescriber_name, Types::String.default("")
+    attribute :prescription_date, Types::Params::Date
+    attribute :hospital_name, Types::String.default("")
+    attribute :hospital_department, Types::String.default("")
+    attribute :hospital_address, Types::Array.of(Types::Coercible::String).default([], shared: true)
+    attribute :hospital_telephone, Types::String.default("")
+    attribute :po_number, Types::String.default("")
+    attribute :generated_at, (Types::Params::DateTime.default { DateTime.now })
+    attribute :no_known_allergies, Types::Bool
+    attribute :allergies, Types::Array.of(Types::Coercible::String)
+    attribute :drug_type, Types::Coercible::String
+    # attribute :prescription_duration, Types::String
+    attribute :administration_device, Types::String.default("")
+    attribute :medications, Types::Array.of(Medication).default([].dup, shared: true)
+    attribute :consultant, Types::String.default("")
+    attribute(
+      :delivery_frequencies,
+      Types::Array.of(Types::Coercible::String).default(["3 months", "6 months"].freeze)
+    )
+    attribute(
+      :prescription_durations,
+      Types::Array
+        .of(Types::Coercible::String)
+        .default(["3 months", "6 months", "12 months"].freeze)
+    )
+    attribute :selected_prescription_duration, Types::String.default("") # e.g. "6 months"
+    attribute :selected_delivery_frequency, Types::String.default("") # e.g. "6 months"
 
     validates :family_name, presence: true
     validates :given_name, presence: true

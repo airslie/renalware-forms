@@ -6,7 +6,8 @@ module Renalware::Forms::Generic
   RSpec.describe Homecare::V1::Allergies do
     context "when the patient has iit recoreded that they have no known allergies" do
       it do
-        args = Renalware::Forms::Homecare::Args.new(no_known_allergies: true)
+        hash = default_test_arg_values.update(no_known_allergies: true)
+        args = Renalware::Forms::Homecare::Args.new(hash)
         doc = test_prawn_doc
 
         described_class.new(doc, args).build
@@ -17,7 +18,11 @@ module Renalware::Forms::Generic
     end
 
     it do
-      args = Renalware::Forms::Homecare::Args.new(allergies: %w(nuts penicillin))
+      hash = default_test_arg_values.update(
+        no_known_allergies: false,
+        allergies: %w(nuts penicillin)
+      )
+      args = Renalware::Forms::Homecare::Args.new(hash)
       doc = test_prawn_doc
 
       described_class.new(doc, args).build

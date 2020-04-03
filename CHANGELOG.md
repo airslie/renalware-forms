@@ -9,6 +9,13 @@ This project adheres to Semantic Versioning.
 ### Changed
 ### Fixed
 
+## 0.1.11
+3 April 2020
+### Added
+### Changed
+- Switched from Virtus to dry-types
+### Fixed
+
 ## 0.1.7
 31 Mar 2020
 ### Added

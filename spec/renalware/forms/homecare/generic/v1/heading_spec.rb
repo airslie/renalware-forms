@@ -5,11 +5,12 @@ require "spec_helper"
 module Renalware::Forms::Generic
   RSpec.describe Homecare::V1::Heading do
     it do
-      args = Renalware::Forms::Homecare::Args.new(
+      hash = default_test_arg_values.update(
         po_number: "P123",
         hospital_number: "H123",
         drug_type: "ESA"
       )
+      args = Renalware::Forms::Homecare::Args.new(hash)
       doc = test_prawn_doc
 
       described_class.new(doc, args).build
