@@ -6,7 +6,7 @@ module Renalware::Forms::Generic
   RSpec.describe Homecare::V1::Signoff do
     it do
       args = Renalware::Forms::Homecare::Args.new(
-        consultant: "Dr Pepper"
+        **default_test_arg_values.update(consultant: "Dr Pepper")
       )
       doc = test_prawn_doc
 
