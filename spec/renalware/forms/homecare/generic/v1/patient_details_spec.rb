@@ -5,7 +5,7 @@ require "spec_helper"
 module Renalware::Forms::Generic
   RSpec.describe Homecare::V1::PatientDetails do
     it do
-      args = Renalware::Forms::Homecare::Args.new(
+      hash = default_test_arg_values.update(
         given_name: "John",
         family_name: "SMITH",
         title: "Mr",
@@ -16,6 +16,7 @@ module Renalware::Forms::Generic
         address: %w(aa bb cc),
         postcode: "POSTCODE"
       )
+      args = Renalware::Forms::Homecare::Args.new(hash)
       doc = test_prawn_doc
 
       described_class.new(doc, args).build

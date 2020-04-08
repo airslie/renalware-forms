@@ -5,7 +5,7 @@ require "spec_helper"
 module Renalware::Forms::Generic
   RSpec.describe Homecare::V1::Medications do
     it do
-      args = Renalware::Forms::Homecare::Args.new
+      args = Renalware::Forms::Homecare::Args.new(**default_test_arg_values)
       args.medications << Renalware::Forms::Homecare::Args::Medication.new(
         date: "2020-01-01",
         drug: "Drug1",

@@ -35,6 +35,21 @@ def test_prawn_doc
   )
 end
 
+def default_test_arg_values
+  {
+    provider: :generic,
+    version: 1,
+    given_name: "John",
+    family_name: "SMITH",
+    title: "Mr",
+    no_known_allergies: true,
+    allergies: [],
+    drug_type: :esa,
+    born_on: "2019-01-01",
+    prescription_date: "2019-01-01"
+  }.dup
+end
+
 def extract_text_from_prawn_doc(doc)
   pdf_reader_from(doc).pages.map(&:text).join
 end
