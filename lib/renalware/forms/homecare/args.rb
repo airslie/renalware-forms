@@ -160,6 +160,7 @@ module Renalware::Forms
       )
 
       raise ArgumentError, args.errors unless args.valid?
+
       args
     end
 
