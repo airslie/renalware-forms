@@ -25,32 +25,32 @@ module Renalware::Forms
 
     # The first 2 attrbutes are used to drive what PDF to build
     attribute :provider, Types::Coercible::String
-    attribute :version, Types::Integer
-    attribute :title, Types::String.default("")
+    attribute :version, Types::Coercible::Integer
+    attribute :title, Types::String.default("").optional
     attribute :given_name, Types::String
     attribute :family_name, Types::String
     attribute :nhs_number, Types::String.default("")
     attribute :born_on, Types::Params::Date
-    attribute :modality, Types::String.default("")
-    attribute :telephone, Types::String.default("")
-    attribute :hospital_number, Types::String.default("")
+    attribute :modality , Types::Coercible::String.optional
+    attribute :telephone, Types::String.default("").optional
+    attribute :hospital_number, Types::String.default("").optional
     attribute :address, Types::Array.of(Types::Coercible::String).default([].dup, shared: true)
     attribute :postcode, Types::String.default("")
     attribute :prescriber_name, Types::String.default("")
-    attribute :prescription_date, Types::Params::Date
+    # attribute :prescription_date, Types::Params::Date
     attribute :hospital_name, Types::String.default("")
     attribute :hospital_department, Types::String.default("")
     attribute :hospital_address, Types::Array.of(Types::Coercible::String).default([], shared: true)
     attribute :hospital_telephone, Types::String.default("")
     attribute :po_number, Types::String.default("")
     attribute :generated_at, (Types::Params::DateTime.default { DateTime.now })
-    attribute :no_known_allergies, Types::Bool
+    attribute :no_known_allergies, Types::Bool.optional
     attribute :allergies, Types::Array.of(Types::Coercible::String)
     attribute :drug_type, Types::Coercible::String
     # attribute :prescription_duration, Types::String
     attribute :administration_device, Types::String.default("")
     attribute :medications, Types::Array.of(Medication).default([].dup, shared: true)
-    attribute :consultant, Types::String.default("")
+    attribute :consultant, Types::String.default("").optional
     attribute(
       :delivery_frequencies,
       Types::Array.of(Types::Coercible::String).default(["3 months", "6 months"].freeze)
