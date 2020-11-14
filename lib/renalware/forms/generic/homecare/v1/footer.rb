@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require "renalware/forms/version"
-
 module Renalware::Forms::Generic
   module Homecare::V1
     class Footer < Base
