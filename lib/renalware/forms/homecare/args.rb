@@ -29,26 +29,26 @@ module Renalware::Forms
     attribute :title, Types::String.default("").optional
     attribute :given_name, Types::String
     attribute :family_name, Types::String
-    attribute :nhs_number, Types::String.default("")
+    attribute :nhs_number, Types::String.default("").optional
     attribute :born_on, Types::Params::Date
     attribute :modality , Types::Coercible::String.optional
     attribute :telephone, Types::String.default("").optional
     attribute :hospital_number, Types::String.default("").optional
     attribute :address, Types::Array.of(Types::Coercible::String).default([].dup, shared: true)
-    attribute :postcode, Types::String.default("")
-    attribute :prescriber_name, Types::String.default("")
+    attribute :postcode, Types::String.default("").optional
+    attribute :prescriber_name, Types::String.default("").optional
     # attribute :prescription_date, Types::Params::Date
     attribute :hospital_name, Types::String.default("")
-    attribute :hospital_department, Types::String.default("")
+    attribute :hospital_department, Types::String.default("").optional
     attribute :hospital_address, Types::Array.of(Types::Coercible::String).default([], shared: true)
-    attribute :hospital_telephone, Types::String.default("")
-    attribute :po_number, Types::String.default("")
+    attribute :hospital_telephone, Types::String.default("").optional
+    attribute :po_number, Types::String.default("").optional
     attribute :generated_at, (Types::Params::DateTime.default { DateTime.now })
     attribute :no_known_allergies, Types::Bool.optional
     attribute :allergies, Types::Array.of(Types::Coercible::String)
-    attribute :drug_type, Types::Coercible::String
+    attribute :drug_type, Types::Coercible::String.optional
     # attribute :prescription_duration, Types::String
-    attribute :administration_device, Types::String.default("")
+    attribute :administration_device, Types::String.default("").optional
     attribute :medications, Types::Array.of(Medication).default([].dup, shared: true)
     attribute :consultant, Types::String.default("").optional
     attribute(
