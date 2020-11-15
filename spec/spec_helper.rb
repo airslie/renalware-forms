@@ -39,6 +39,10 @@ def default_test_arg_values
   {
     provider: :generic,
     version: 1,
+    modality: "HD",
+    telephone: "",
+    hospital_number: nil,
+    consultant: nil,
     given_name: "John",
     family_name: "SMITH",
     title: "Mr",

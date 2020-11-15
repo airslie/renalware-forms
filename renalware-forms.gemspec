@@ -1,7 +1,7 @@
 $:.push File.expand_path("lib", __dir__)
 
 # Maintain your gem's version:
-require "renalware/forms/version"
+require "renalware/forms"
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |spec|
@@ -23,7 +23,7 @@ Gem::Specification.new do |spec|
   spec.add_dependency "rake"
   spec.add_dependency "dry-types"
   spec.add_dependency "dry-struct"
-  spec.add_dependency "zeitwerk"
+  spec.add_dependency "zeitwerk", "~> 2.4.1"
   spec.add_development_dependency "rspec"
   spec.add_development_dependency "pdf-reader"
 end
