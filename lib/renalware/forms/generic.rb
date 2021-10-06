@@ -4,3 +4,5 @@ module Renalware::Forms
   module Generic
   end
 end
+
+require_relative "generic/homecare"
