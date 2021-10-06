@@ -9,6 +9,14 @@ This project adheres to Semantic Versioning.
 ### Changed
 ### Fixed
 
+## 0.1.14
+6 Oct 2021
+### Added
+### Changed
+- Switched from dry-types to Virtus
+- Use Ruby 3
+
+### Fixed
 ## 0.1.11
 3 April 2020
 ### Added
