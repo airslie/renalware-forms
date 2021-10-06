@@ -19,9 +19,9 @@ module Renalware::Forms::Generic
       text = extract_pdf_text(args)
 
       expect(text).to include("Repeat prescription for")
-      expect(text).to include("❏ 3 months")
-      expect(text).to include("❏ 6 months")
-      expect(text).to include("❏ 12 months")
+      expect(text).to match(/❏ +3 months/)
+      expect(text).to match(/❏ +6 months/)
+      expect(text).to match(/❏ +12 months/)
     end
 
     it "works where there are no prescription_durations supplied" do
@@ -43,9 +43,9 @@ module Renalware::Forms::Generic
 
         text = extract_pdf_text(args)
 
-        expect(text).to include("❏ 3 months")
-        expect(text).to include("■ 6 months")
-        expect(text).to include("❏ 12 months")
+        expect(text).to match(/❏ +3 months/)
+        expect(text).to match(/■ +6 months/)
+        expect(text).to match(/❏ +12 months/)
       end
     end
   end

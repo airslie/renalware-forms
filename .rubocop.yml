@@ -10,7 +10,7 @@ inherit_from:
 
 AllCops:
   UseCache: true
-  TargetRubyVersion: 2.4
+  TargetRubyVersion: 3.0
   # Just defining the Exclude or Include keys here overwrites the settings in default.yml
   # so we have to redefine the entire set
   Exclude:

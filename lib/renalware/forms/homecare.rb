@@ -1,10 +1,9 @@
 # frozen_string_literal: true
 
-require "prawn"
-require "prawn/table"
-require "attr_extras"
-
 module Renalware::Forms
   module Homecare
   end
 end
+
+require_relative "homecare/args"
+require_relative "homecare/pdf"

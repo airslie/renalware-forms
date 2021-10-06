@@ -17,9 +17,9 @@ module Renalware::Forms::Generic
       text = extract_pdf_text(args)
 
       expect(text).to include("Frequency of deliveries")
-      expect(text).to include("❏ Once")
-      expect(text).to include("❏ 3 weeks")
-      expect(text).to include("❏ 6 weeks")
+      expect(text).to match(/❏ +Once/)
+      expect(text).to match(/❏ +3 weeks/)
+      expect(text).to match(/❏ +6 weeks/)
     end
 
     context "when there are no frequencies supplied" do
@@ -28,9 +28,9 @@ module Renalware::Forms::Generic
 
         text = extract_pdf_text(args)
 
-        expect(text).to include("Frequency of deliveries")
-        expect(text).to include("❏ 3 months")
-        expect(text).to include("❏ 6 months")
+        expect(text).to match(/Frequency of deliveries/)
+        expect(text).to match(/❏ +3 months/)
+        expect(text).to match(/❏ +6 months/)
       end
     end
 
@@ -44,9 +44,9 @@ module Renalware::Forms::Generic
 
         text = extract_pdf_text(args)
 
-        expect(text).to include("❏ 3 months")
-        expect(text).to include("■ 6 months")
-        expect(text).to include("❏ 12 months")
+        expect(text).to match(/❏ +3 months/)
+        expect(text).to match(/■ +6 months/)
+        expect(text).to match(/❏ +12 months/)
       end
     end
   end

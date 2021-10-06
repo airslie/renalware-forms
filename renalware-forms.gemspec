@@ -13,8 +13,13 @@ Gem::Specification.new do |spec|
   spec.summary     = "PDF library for Renalware forms"
   spec.description = "The home for various forms for external providers e.g. home care prescriptions"
   spec.license     = "MIT"
+  spec.required_ruby_version = ">= 3.0.0"
 
-  spec.files = Dir["{app,config,db,lib}/**/*", "MIT-LICENSE", "Rakefile", "README.md"]
+  spec.files         = `git ls-files`.split("\n")
+  spec.test_files    = `git ls-files -- {spec}/*`.split("\n")
+  spec.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
+  spec.require_paths = ["lib"]
+  spec.extra_rdoc_files = ["README.md"]
 
   spec.add_dependency "activemodel"
   spec.add_dependency "attr_extras", "~> 6.2"
@@ -23,7 +28,6 @@ Gem::Specification.new do |spec|
   spec.add_dependency "rake"
   spec.add_dependency "dry-types"
   spec.add_dependency "dry-struct"
-  spec.add_dependency "zeitwerk"
   spec.add_development_dependency "rspec"
   spec.add_development_dependency "pdf-reader"
 end
