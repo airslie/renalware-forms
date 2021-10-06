@@ -3,7 +3,7 @@
 $LOAD_PATH.push File.expand_path("lib", __dir__)
 
 # Maintain your gem's version:
-require "renalware/forms/version"
+require_relative "lib/renalware/forms/version"
 
 # Describe your gem and declare its dependencies:
 Gem::Specification.new do |spec|
@@ -31,4 +31,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency "virtus"
   spec.add_development_dependency "pdf-reader"
   spec.add_development_dependency "rspec"
+  spec.metadata["rubygems_mfa_required"] = "true"
 end
