@@ -9,6 +9,13 @@ This project adheres to Semantic Versioning.
 ### Changed
 ### Fixed
 
+## 0.1.15
+6 Oct 2021
+### Added
+### Changed
+### Fixed
+- Fixed unresolved constant VERSION
+
 ## 0.1.14
 6 Oct 2021
 ### Added
