@@ -9,6 +9,13 @@ This project adheres to Semantic Versioning.
 ### Changed
 ### Fixed
 
+## 0.1.16
+10 Mar 2022
+### Added
+### Changed
+- Improved zeitwerk compatability
+### Fixed
+
 ## 0.1.15
 6 Oct 2021
 ### Added
