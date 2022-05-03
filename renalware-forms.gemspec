@@ -16,6 +16,9 @@ Gem::Specification.new do |spec|
   spec.description = "The home for various forms for external providers eg home care prescriptions"
   spec.license     = "MIT"
   spec.required_ruby_version = ">= 3.0.0"
+  spec.metadata = {
+    "rubygems_mfa_required" => "true"
+  }
 
   spec.files         = `git ls-files`.split("\n")
   spec.test_files    = `git ls-files -- {spec}/*`.split("\n")
@@ -29,6 +32,4 @@ Gem::Specification.new do |spec|
   spec.add_dependency "prawn-table", "~> 0.2"
   spec.add_dependency "rake"
   spec.add_dependency "virtus"
-  spec.add_development_dependency "pdf-reader"
-  spec.add_development_dependency "rspec"
 end

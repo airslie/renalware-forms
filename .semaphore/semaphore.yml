@@ -15,7 +15,7 @@ blocks:
           commands:
             - checkout
             - cache restore gems-$SEMAPHORE_GIT_BRANCH-$(checksum Gemfile.lock),gems-$SEMAPHORE_GIT_BRANCH-,gems-master-
-            - sem-version ruby 3.0.2
+            - sem-version ruby 3.0.4
             - bundle install --deployment -j 4 --path vendor/bundle
             - cache store gems-$SEMAPHORE_GIT_BRANCH-$(checksum Gemfile.lock) vendor/bundle
 
@@ -37,7 +37,7 @@ blocks:
           - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
           - chmod +x ./cc-test-reporter
           - ./cc-test-reporter before-build
-          - sem-version ruby 3.0.2
+          - sem-version ruby 3.0.4
           - bundle install --deployment --path vendor/bundle
 
       jobs:
