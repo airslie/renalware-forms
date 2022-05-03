@@ -13,6 +13,8 @@ gemspec
 
 group :development, :test do
   gem "byebug"
+  gem "pdf-reader"
+  gem "rspec"
   gem "rubocop"
   gem "rubocop-performance"
   gem "rubocop-rails"
