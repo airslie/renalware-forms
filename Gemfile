@@ -12,6 +12,7 @@ gemspec
 # your gem to rubygems.org.
 
 group :development, :test do
+  gem "bundler-audit", require: false
   gem "byebug"
   gem "pdf-reader"
   gem "rspec"
