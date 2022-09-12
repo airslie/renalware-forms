@@ -1,0 +1,39 @@
+name: Verify
+
+# Do not run when a tag pushed, or when merging to main
+# Do not run if updating docs
+on: 
+  push:
+    tags-ignore: 
+      - '*'
+    branches-ignore:
+      - master
+    paths-ignore:
+      - 'docs/**'
+
+env:
+  BUNDLE_GITHUB__COM: ${{ secrets.CR_PAT }}
+  RAILS_ENV: test
+
+jobs:
+  lint_and_test:
+    name: Lint and test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Run security checks
+        run: |
+          bundle exec bundle audit --update
+
+      - name: Run tests
+        env:
+          RAILS_ENV: test 
+        run: bundle exec rspec --format progress
