@@ -2,18 +2,18 @@
 
 module Renalware::Forms
   class Homecare::Pdf
-    def initialize(args)
-      raise ArgumentError unless args
-
-      @args = args
-    end
-
     def self.valid?(args)
       new(args).valid?
     end
 
     def self.generate(args)
       new(args).generate
+    end
+
+    def initialize(args)
+      raise ArgumentError unless args
+
+      @args = args
     end
 
     def valid?
@@ -31,7 +31,7 @@ module Renalware::Forms
     rescue NameError => e
       raise(
         ArgumentError,
-        "No PDF forms found for provider=#{args.provider} version=#{args.version} "\
+        "No PDF forms found for provider=#{args.provider} version=#{args.version} " \
         "trying to resolve Renalware::Forms::#{document_class_name} " \
         "#{e.message}"
       )

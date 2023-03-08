@@ -63,45 +63,6 @@ module Renalware::Forms
     validates :version, presence: true
     validate :medications_are_present
 
-    def patient_name
-      name = [family_name, given_name].compact.join(", ")
-      name += " (#{title})" if title.to_s != ""
-      name
-    end
-
-    def formatted_address
-      format_address_array address
-    end
-
-    def formatted_address_and_postcode
-      format_address_array(address << postcode)
-    end
-
-    def formatted_hospital_address
-      format_address_array hospital_address
-    end
-
-    def formatted_hospital_name_and_address
-      arr = [hospital_name] + hospital_address
-      format_address_array arr
-    end
-
-    def format_address_array(add)
-      return unless add.is_a?(Array)
-
-      add.compact.reject { |line| line == "" }.uniq&.join("\n")
-    end
-
-    def formatted_prescription_date
-      return unless prescription_date
-
-      prescription_date
-    end
-
-    def allergies_as_list
-      Array(allergies).uniq.compact.join("<br>")
-    end
-
     # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
     def self.test_data(provider: :generic, version: 1)
       new.tap do |args|
@@ -159,6 +120,46 @@ module Renalware::Forms
         raise ArgumentError, args.errors unless args.valid?
       end
     end
+
+    def patient_name
+      name = [family_name, given_name].compact.join(", ")
+      name += " (#{title})" if title.to_s != ""
+      name
+    end
+
+    def formatted_address
+      format_address_array address
+    end
+
+    def formatted_address_and_postcode
+      format_address_array(address << postcode)
+    end
+
+    def formatted_hospital_address
+      format_address_array hospital_address
+    end
+
+    def formatted_hospital_name_and_address
+      arr = [hospital_name] + hospital_address
+      format_address_array arr
+    end
+
+    def format_address_array(add)
+      return unless add.is_a?(Array)
+
+      add.compact.reject { |line| line == "" }.uniq&.join("\n")
+    end
+
+    def formatted_prescription_date
+      return unless prescription_date
+
+      prescription_date
+    end
+
+    def allergies_as_list
+      Array(allergies).uniq.compact.join("<br>")
+    end
+
     # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
 
     def medications_are_present
