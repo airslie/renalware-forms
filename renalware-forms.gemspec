@@ -27,7 +27,8 @@ Gem::Specification.new do |spec|
   spec.extra_rdoc_files = ["README.md"]
 
   spec.add_dependency "activemodel"
-  spec.add_dependency "attr_extras", "~> 6.2"
+  spec.add_dependency "attr_extras"
+  spec.add_dependency "matrix"
   spec.add_dependency "prawn", "~> 2.2"
   spec.add_dependency "prawn-table", "~> 0.2"
   spec.add_dependency "rake"
