@@ -12,6 +12,20 @@ This project adheres to Semantic Versioning.
 
 ### Fixed
 
+## 0.1.17
+
+08 Mar 2023
+
+### Added
+
+### Changed
+- Use Ruby 3.2.0 in CI
+- Update gems
+- Loosen gem dependencies
+- Rubocop housekeeping
+### Fixed
+
+
 ## 0.1.16
 
 30 Sep 2022
